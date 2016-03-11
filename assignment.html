@@ -1,113 +1,28 @@
+<!--
+HTML FILE INTENDED FOR TESTING PURPOSES ONLY 
+-->
+
 <!DOCTYPE html>
-
-
 <html>
 
 <head>
 	<title>Progamming Assignment 002</title>
+	<script src="functions.js"></script>
 	<script>
-		function getHammingDistance(str1,str2){
-			var counter = 0 ;
-			if(str1.length <= 0) return 'Error! Empty String';
-			else {
-				if(str1.length != str2. length) return 'Error! Strings are not equal.'
-				else {
-					for(i = 0 ; i < str1.length ; i++){
-						if(str1[i] != str2[i]) counter++;
-					}
-				}
-			}
-			return counter;
+		function useIt(){
+			//alert('Hamming Distance is: ' + getHammingDistance('TCGGA','AAAAG'));
+			//alert('Count is: ' + countSubstrPattern('AATATATAGG','ATA'));
+			//alert(isValidString('AAGGCTATGC','ACGT'));
+			//alert('Skew is ' + getSkew('GGCCAC',6));
+			//alert('Max skew is ' + getMaxSkew('GGCCAC',3));
+			alert('Min skew is: ' + getMinSkew('GGCCAC',4));
 		}
-		function countSubstrPattern(original,pattern){
-			var counter = 0 ;
-			var counter2 = 0;
-			if(original.length <= 0 || pattern.length <= 0) return 'Error! Empty String';
-			else {
-				if(original.length < pattern.length) return 0;
-				else {
-					for(i = 0 ; i < original.length ; i++){
-						if(i+pattern.length > original.length) break;
-						for(j = i ,counter2 = 0, k = 0; k < pattern.length ; j++, k++){
-							if(original[j] == pattern[k]) counter2++;
-							else break;
-						}
-						if(counter2 == pattern.length) counter++;
-					}
-				}
-			}
-			alert(counter);
-			return counter;
-		}
-		function isValidString(str, alphabet){
-			var counter = 0;
-			for(i =  0 ; i < alphabet.length ; i++){
-				for(j = 0, counter = 0; j < str.length ; j++){
-					if(alphabet[i] == str[j]) counter++;
-				}
-				if(counter == 0) return false;
-			}
-			return true;
-		}
-
-		function getSkew(str, n){
-			var gCount = 0;
-			var cCount = 0;
-
-			if(str.length <= 0) return 'Error! Invalid String';
-			if(n <= 0 || n > str.length) return 'Invalid Position';
-		
-			for(i = 1 ; i <= n ; i++){
-				if(str[i-1] == 'G') gCount++;
-				else if(str[i-1] == 'C') cCount++;				
-			}
-			return gCount-cCount;
-		}
-
-		function getMaxSkew(str, n){
-			var max = 0;
-			var i = 1;
-
-			if(str.length <= 0) return 'Error! Invalid String';
-			if(n <= 0 || n > str.length) return 'Invalid Position';
-
-			do{
-				var temp = getSkew(str,i);
-				if(max < temp) max = temp;
-				i++;
-			}while(i!=n+1);	
-			alert('answer is ' + max);
-		}
-
-		function getMinSkew(str, n){
-			if(str.length <= 0) return 'Error! Invalid String';
-			if(n <= 0 || n > str.length) return 'Invalid Position';
-			
-			var min = temp = getSkew(str,1);
-			var i = 2;
-			
-			while(i!=n+1){
-				var temp = getSkew(str,i);
-				if(min > temp) min = temp;
-				i++;
-			};	
-			alert('answer is ' + min);
-		}
-
-
 	</script>
 </head>
 
-
 <body>
 	<h3>Programming Assignment 002</h3>
-		<input type = "button" value = "Hamming Distance" onClick = "getHammingDistance('AACCTT','GGCCTT')"/>
-		<input type = "button" value = "Count Sub String Pattern" onClick = "countSubstrPattern('AATATATAGG','GG')"/>
-		<input type = "button" value = "Validate String" onClick = "isValidString('AAGGCTATGC','aCGT')"/>
-		<input type = "button" value = "Get Skew" onClick = "getSkew('GGCCAC',6)"/>
-		<input type = "button" value = "Get Max Skew" onClick = "getMaxSkew('GGCCAC',3)"/>
-		<input type = "button" value = "Get Min Skew" onClick = "getMinSkew('GGCCAC',1)"/>
-
+	<h4>Manipulate useIt() function in assignment.html to test functions</h4>
+		<input type = "button" value = "Compute" onClick = "useIt()"/>
 </body>
-
 </html>
