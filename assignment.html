@@ -50,6 +50,51 @@
 			return true;
 		}
 
+		function getSkew(str, n){
+			var gCount = 0;
+			var cCount = 0;
+
+			if(str.length <= 0) return 'Error! Invalid String';
+			if(n <= 0 || n > str.length) return 'Invalid Position';
+		
+			for(i = 1 ; i <= n ; i++){
+				if(str[i-1] == 'G') gCount++;
+				else if(str[i-1] == 'C') cCount++;				
+			}
+			return gCount-cCount;
+		}
+
+		function getMaxSkew(str, n){
+			var max = 0;
+			var i = 1;
+
+			if(str.length <= 0) return 'Error! Invalid String';
+			if(n <= 0 || n > str.length) return 'Invalid Position';
+
+			do{
+				var temp = getSkew(str,i);
+				if(max < temp) max = temp;
+				i++;
+			}while(i!=n+1);	
+			alert('answer is ' + max);
+		}
+
+		function getMinSkew(str, n){
+			if(str.length <= 0) return 'Error! Invalid String';
+			if(n <= 0 || n > str.length) return 'Invalid Position';
+			
+			var min = temp = getSkew(str,1);
+			var i = 2;
+			
+			while(i!=n+1){
+				var temp = getSkew(str,i);
+				if(min > temp) min = temp;
+				i++;
+			};	
+			alert('answer is ' + min);
+		}
+
+
 	</script>
 </head>
 
@@ -59,6 +104,9 @@
 		<input type = "button" value = "Hamming Distance" onClick = "getHammingDistance('AACCTT','GGCCTT')"/>
 		<input type = "button" value = "Count Sub String Pattern" onClick = "countSubstrPattern('AATATATAGG','GG')"/>
 		<input type = "button" value = "Validate String" onClick = "isValidString('AAGGCTATGC','aCGT')"/>
+		<input type = "button" value = "Get Skew" onClick = "getSkew('GGCCAC',6)"/>
+		<input type = "button" value = "Get Max Skew" onClick = "getMaxSkew('GGCCAC',3)"/>
+		<input type = "button" value = "Get Min Skew" onClick = "getMinSkew('GGCCAC',1)"/>
 
 </body>
 
